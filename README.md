@@ -29,7 +29,7 @@ RTORRENT_RPC_URL='http://127.0.0.1/RPC2' DRY_RUN=0 ~/scripts/rtorrent_cleanup.py
 
 Optionally, set a cron entry to run this daily. Example for running at 3:15 AM every day:
 ```cron
-15 3 * * * RTORRENT_RPC_URL='http://127.0.0.1/RPC2' DRY_RUN=0 /home/darkpassenger/scripts/rtorrent_cleanup.py
+15 3 * * * RTORRENT_RPC_URL='http://127.0.0.1/RPC2' DRY_RUN=0 /home/myuser/scripts/rtorrent_cleanup.py
 ```
 
 The script assumes you can reach rTorrent through an HTTP XML-RPC endpoint like /RPC2. That is the common ruTorrent setup behind a web server. rTorrent itself speaks XML-RPC and the docs cover that API, but if your install only exposes a raw SCGI socket and not an HTTP endpoint, you will need a different transport layer.
