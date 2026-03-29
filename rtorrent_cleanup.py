@@ -7,11 +7,25 @@ import logging
 import pathlib
 import xmlrpc.client
 
+def parse_labels(env_value: str):
+    if not env_value:
+        return {"notes", "whitepapers"}
+    return {x.strip().lower() for x in env_value.split(",") if x.strip()}
+
+def parse_int(env_value: str, default: int):
+    try:
+        return int(env_value)
+    except (TypeError, ValueError):
+        return default
+
 RPC_URL = os.environ.get("RTORRENT_RPC_URL", "http://127.0.0.1/RPC2")
-LABELS = {"notes", "whitepapers"}
-MIN_AGE_DAYS = int(os.environ.get("MIN_AGE_DAYS", "28"))
+
+LABELS = parse_labels(os.environ.get("LABELS"))
+MIN_AGE_DAYS = parse_int(os.environ.get("MIN_AGE_DAYS"), 28)
+
 DRY_RUN = os.environ.get("DRY_RUN", "1") != "0"
 LOGFILE = os.environ.get("LOGFILE", os.path.expanduser("~/rtorrent_cleanup.log"))
+
 
 logging.basicConfig(
     filename=LOGFILE,

@@ -39,6 +39,7 @@ The script assumes you can reach rTorrent through an HTTP XML-RPC endpoint like 
 | Variable | Description | Default |
 | ----------- | ----------- |  ----------- |
 | RTORRENT_RPC_URL | The full HTTTP url of your rtorrent instance | http://127.0.0.1/RPC2 |
+| LABELS | Comma separated list of labels | notes, whitepapers |
 | MIN_AGE_DAYS | The minimum seeding time for a torrent | 28 |
 | LOGFILE | Log file absolute path | ~/rtorrent_cleanup.log |
 | DRY_RUN | Only execute a dry run | 1 |
